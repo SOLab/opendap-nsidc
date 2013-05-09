@@ -1,4 +1,5 @@
+OPeNDAP (BES) data handler for Sea Ice concentration products. Supports both daily and monthly files.
 
-$Id: README $
-
-Module README File
+Tested only for next products:
+- Near-Real-Time DMSP SSM/I-SSMIS Daily Polar Gridded Sea Ice Concentrations (http://nsidc.org/data/docs/daac/nsidc0081_ssmi_nrt_seaice.gd.html);
+- Sea Ice Concentrations from Nimbus-7 SMMR and DMSP SSM/I-SSMIS Passive Microwave Data (http://nsidc.org/data/nsidc-0051.html).
