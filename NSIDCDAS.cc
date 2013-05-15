@@ -64,42 +64,42 @@ set_file_headers( DAS &das, const string &filename )
     char *fileBuffer = readBytesFromFile(filename, 300);
 
     std::stringstream ss;
-    for(int i=0;i<6;i++)
+    for(int i=0;i<5;i++)
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "missing_data_integer_value", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "missing_data_integer_value_5", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=6;i<12;i++)
+    for(int i=6;i<11;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "number_of_columns_in_polar_stereographic_grid", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=12;i<18;i++)
+    for(int i=12;i<17;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "number_of_rows_in_polar_stereographic_grid", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=24;i<30;i++)
+    for(int i=24;i<29;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "latitude_enclosed_by_polar_stereographic_grid", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=30;i<36;i++)
+    for(int i=30;i<35;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "greenwich_orientation_of_polar_stereographic_grid", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=42;i<48;i++)
+    for(int i=42;i<47;i++)
     {
         ss <<  fileBuffer[i];
     }
@@ -113,77 +113,77 @@ set_file_headers( DAS &das, const string &filename )
     attr_table_ptr->append_attr( "I-coordinate_of_the_grid_intersection_at_the_pole", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=54;i<60;i++)
+    for(int i=54;i<59;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "instrument_descriptor", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=60;i<66;i++)
+    for(int i=60;i<65;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "two_descriptors_of_two_characters_each_that_describe_the_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=66;i<72;i++)
+    for(int i=66;i<71;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "Starting_Julian_day_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=72;i<78;i++)
+    for(int i=72;i<77;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "Starting_hour_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=78;i<84;i++)
+    for(int i=78;i<83;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "Starting_minute_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=84;i<90;i++)
+    for(int i=84;i<89;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "Ending_Julian_day_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=90;i<96;i++)
+    for(int i=90;i<95;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "Ending_hour_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=96;i<102;i++)
+    for(int i=96;i<101;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "Ending_minute_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=102;i<108;i++)
+    for(int i=102;i<107;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "Year_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=108;i<114;i++)
+    for(int i=108;i<113;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "Julian_day_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=115;i<120;i++)
+    for(int i=115;i<119;i++)
     {
         ss <<  fileBuffer[i];
     }
@@ -197,21 +197,21 @@ set_file_headers( DAS &das, const string &filename )
     attr_table_ptr->append_attr( "Integer_scaling_factor", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=126;i<150;i++)
+    for(int i=126;i<149;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "file_name", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=150;i<230;i++)
+    for(int i=150;i<229;i++)
     {
         ss <<  fileBuffer[i];
     }
     attr_table_ptr->append_attr( "80-character_image_title", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=230;i<300;i++)
+    for(int i=230;i<229;i++)
     {
         ss <<  fileBuffer[i];
     }

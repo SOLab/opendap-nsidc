@@ -47,19 +47,20 @@ bool NSIDCArray::read()
     int counter = 0;
     if (this->name() == "sea_ice_concentration") {
         // read all bytes from file
-        char *fileBuffer = readBytesFromFile(filename, 0);
+        char *fileBuffer = readBytesFromFile(filename, capacity + headerSize);
         char *buffer = (char*) malloc( capacity );
         for (int i = start[0]; i <= stop[0]; i += stride[0]) {
             for (int j = start[1]; j <= stop[1]; j += stride[1]) {
 	        int byteIndex = (columns * j + i) + headerSize;
 	        buffer[counter++] = fileBuffer[byteIndex];
+		//std::cerr << byteIndex << std::endl;
             }
         }
         val2buf( (void*) buffer ) ;
         free( buffer );
         free(fileBuffer);
-    } else if (this->name() == "latitude" || this->name() == "longitude") {
-        float *buffer = (float*) malloc(capacity);
+    } else if (this->name() == "latitude" || this->name() == "longitude") {	
+        float *buffer = (float*) malloc(capacity);	
         for (int i = start[0]; i <= stop[0]; i += stride[0]) {
             for (int j = start[1]; j <= stop[1]; j += stride[1]) {
                 int byteIndex = (columns * j + i);
