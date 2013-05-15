@@ -1,10 +1,13 @@
 #include "NSIDCVariable.h"
+#include <string>
 
-NSIDCVariable::NSIDCVariable()
-    : _short_name("sea_ice_concentration"), 
-      _long_name("Sea ice concentration"), 
-      _scale_factor(250), 
-      _units("fractional coverage scaled by scale_factor")
+using std::string;
+
+NSIDCVariable::NSIDCVariable(string short_name, string long_name, double scale_factor, string units)
+    : _short_name(short_name), 
+      _long_name(long_name), 
+      _scale_factor(scale_factor), 
+      _units(units)
 {
 
 }

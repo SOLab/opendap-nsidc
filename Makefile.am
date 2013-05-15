@@ -19,12 +19,12 @@ NSIDC_HDRS:=
 
 BES_SRCS = \
 		NSIDCModule.cc NSIDCRequestHandler.cc NSIDCVariable.cc NSIDCArray.cc NSIDCUtils.cc \
-                NSIDCDAS.cc NSIDCDDS.cc
+                NSIDCDAS.cc NSIDCDDS.cc NSIDCGridCoordinatesLat.cc NSIDCGridCoordinatesLon.cc
 
 BES_HDRS = \
 		NSIDCModule.h NSIDCRequestHandler.h \
 		NSIDCResponseNames.h NSIDCVariable.h NSIDCArray.h NSIDCUtils.h \
-                NSIDCDAS.h NSIDCDDS.h
+                NSIDCDAS.h NSIDCDDS.h NSIDCGridCoordinates.h
 
 libbinary_ssmi_nsidc_module_la_SOURCES = $(NSIDC_SRCS) $(BES_SRCS) $(NSIDC_HDRS) $(BES_HDRS)
 libbinary_ssmi_nsidc_module_la_CPPFLAGS = $(BES_CPPFLAGS)

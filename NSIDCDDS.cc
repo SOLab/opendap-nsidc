@@ -29,22 +29,47 @@ read_descriptors( DDS &dds, const string &filename )
     int columns = get_columns_number(filename);
     int rows = get_rows_number(filename);    
 
-    NSIDCVariable variable = NSIDCVariable();
-    BaseType *bt = 0;
-    bt = dds.get_factory()->NewByte( variable._short_name ) ;
-    NSIDCArray *ar = new NSIDCArray( variable._short_name, filename, bt);
+    BaseType *bt = 0;   
+    bt = dds.get_factory()->NewByte( "sea_ice_concentration" );
+    NSIDCArray *ar = new NSIDCArray( "sea_ice_concentration", filename, bt);
 
     if (bt)
     {
         ar->add_var( bt ) ;
-
         ar->append_dim( columns, "lon" );
         ar->append_dim( rows, "lat" );
 
         dds.add_var( ar );
     }
-
     delete ar;
     delete bt;
+
+    BaseType *btLat = dds.get_factory()->NewFloat32( "latitude" );    
+    NSIDCArray *arrLat = new NSIDCArray( "latitude", filename, btLat);
+ 
+    if (btLat)
+    {
+         arrLat->add_var( btLat ) ; 
+         arrLat->append_dim( columns, "lon" );
+         arrLat->append_dim( rows, "lat" );
+ 
+         dds.add_var( arrLat );
+    }
+    delete arrLat; 
+    delete btLat;
+
+    BaseType *btLon = dds.get_factory()->NewFloat32( "longitude" );
+    NSIDCArray *arrLon = new NSIDCArray( "longitude", filename, btLon);
+ 
+    if (btLon)
+    {
+         arrLon->add_var( btLon ) ; 
+         arrLon->append_dim( columns, "lon" );
+         arrLon->append_dim( rows, "lat" );
+ 
+         dds.add_var( arrLon );
+    }
+    delete arrLon;
+    delete btLon; 
 }
 

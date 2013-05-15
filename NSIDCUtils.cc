@@ -17,7 +17,7 @@ using namespace libdap;
 char *readBytesFromFile(string filename, int bytesLength)
 {       
     FILE *pFile;
-    pFile = fopen( filename.c_str(), "r" );
+    pFile = fopen( filename.c_str(), "rb" );
     if (pFile == NULL)
     {
         string err = (string)"Unable to open file " + filename ;
@@ -48,7 +48,7 @@ char *readBytesFromFile(string filename, int bytesLength)
 bool is_north(const string &filename)
 {
     regex_t preg_north;
-    const char *north_file_regex =  "^nt_[0-9]{8}_[0-9a-z]{3}_[0-9a-z]{3}_n.bin$";
+    const char *north_file_regex =  "^nt_[0-9]{6,8}_[0-9a-z]{3}_[0-9a-z]{3}_n.bin$";
     regcomp(&preg_north, north_file_regex, REG_EXTENDED | REG_NOSUB);
     return regexec(&preg_north, name_path(filename).c_str(), 0, NULL, 0) == 0;
 }

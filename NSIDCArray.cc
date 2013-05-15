@@ -1,9 +1,9 @@
 #include "NSIDCArray.h"
 #include "NSIDCUtils.h"
+#include "NSIDCGridCoordinates.h"
 
 #include <BESDapError.h>
 #include <BESNotFoundError.h>
-
 #include <BESDebug.h>
 
 #include <stdlib.h>
@@ -12,7 +12,6 @@
 NSIDCArray::NSIDCArray( const string &n, const string &d, BaseType *v )
     : Array( n, d, v )
 {
-
 }
 
 NSIDCArray::~NSIDCArray()
@@ -31,9 +30,6 @@ bool NSIDCArray::read()
     bool is_slab = getSlabConstraint( start, stop, stride ) ;
     string filename = dataset();
 
-    // read all bytes from file
-    char *fileBuffer = readBytesFromFile(filename, 0);
-
     int columns = get_columns_number(filename);
     int rows = get_rows_number(filename);
     int headerSize = 300;
@@ -48,24 +44,41 @@ bool NSIDCArray::read()
     
     // allocate memory for destination buffer
     int capacity = rows * columns; 
-    char *buffer = (char*) malloc( capacity );
-
     int counter = 0;
-    for (int i = start[0]; i <= stop[0]; i += stride[0]) {
-        for (int j = start[1]; j <= stop[1]; j += stride[1]) {
-	    int byteIndex = (columns * j + i) + headerSize;
-	    buffer[counter++] = fileBuffer[byteIndex];
+    if (this->name() == "sea_ice_concentration") {
+        // read all bytes from file
+        char *fileBuffer = readBytesFromFile(filename, 0);
+        char *buffer = (char*) malloc( capacity );
+        for (int i = start[0]; i <= stop[0]; i += stride[0]) {
+            for (int j = start[1]; j <= stop[1]; j += stride[1]) {
+	        int byteIndex = (columns * j + i) + headerSize;
+	        buffer[counter++] = fileBuffer[byteIndex];
+            }
         }
+        val2buf( (void*) buffer ) ;
+        free( buffer );
+        free(fileBuffer);
+    } else if (this->name() == "latitude" || this->name() == "longitude") {
+        float *buffer = (float*) malloc(capacity);
+        for (int i = start[0]; i <= stop[0]; i += stride[0]) {
+            for (int j = start[1]; j <= stop[1]; j += stride[1]) {
+                int byteIndex = (columns * j + i);
+		//std::cerr << GridCoordinates::longitudes[byteIndex] << std::endl;
+                float value = this->name() == "latitude"
+                    ? GridCoordinates::latitudes[byteIndex]
+                    : GridCoordinates::longitudes[byteIndex];
+                buffer[counter++] = value;
+            }
+        }
+        val2buf( (void*) buffer ) ;
+        free( buffer ) ;
+    } else {
+        throw BESDapError( "Unknown variable " + this->name(), true,
+                               unknown_error, __FILE__, __LINE__ ) ;
     }
-
-    val2buf( (void*) buffer ) ;
-
-    free( buffer ) ;
-    free( fileBuffer ) ;
 
     set_read_p( true ) ;
     return true ;
-
 }
 
 bool NSIDCArray::getSlabConstraint( vector<int>&start_array,
@@ -94,3 +107,4 @@ bool NSIDCArray::getSlabConstraint( vector<int>&start_array,
     }
     return true ;
 }
+

@@ -20,7 +20,7 @@ public:
     bool getSlabConstraint(vector < int >&start_array,
                             vector < int >&stop_array,
                             vector < int >&stride_array ) ;
-
+    float *readGridCoordinatesFromFile(char* filename);
 };
 
 #endif // _NSIDC_Array_h

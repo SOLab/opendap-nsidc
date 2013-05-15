@@ -19,7 +19,11 @@ read_attributes(DAS &das, const string &filename)
     
     set_file_headers(das, filename);
 
-    set_variable(das);
+    set_ice_variable(das);
+
+    set_lat_variable(das);
+
+    set_lon_variable(das);
 }
 
 void
@@ -32,6 +36,7 @@ set_global_attributes( DAS &das )
         attr_table_ptr =
                 das.add_table( table_name, new AttrTable );
 
+    attr_table_ptr->append_attr( "CONVENTIONS", AttrType_to_String(Attr_string), "COARDS" ) ;
     attr_table_ptr->append_attr( "short_name", AttrType_to_String(Attr_string), "NSIDC_SSMI_NRT_SEAICE" ) ;
     attr_table_ptr->append_attr( "long_name", AttrType_to_String(Attr_string), "Near-Real-Time DMSP SSM/I-SSMIS Daily Polar Gridded Sea Ice Concentrations" ) ;
     attr_table_ptr->append_attr( "producer_agency", AttrType_to_String(Attr_string), "National Snow & Ice Data Center" ) ;
@@ -112,7 +117,7 @@ set_file_headers( DAS &das, const string &filename )
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "instrument_descriptor_(SMMR,SSM/I)", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "instrument_descriptor", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
     for(int i=60;i<66;i++)
@@ -133,14 +138,14 @@ set_file_headers( DAS &das, const string &filename )
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "Starting_hour_of_grid_data_(if_available)", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "Starting_hour_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
     for(int i=78;i<84;i++)
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "Starting_minute_of_grid_data_(if_available)", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "Starting_minute_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
     for(int i=84;i<90;i++)
@@ -154,14 +159,14 @@ set_file_headers( DAS &das, const string &filename )
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "Ending_hour_of_grid_data_(if_available)", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "Ending_hour_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
     for(int i=96;i<102;i++)
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "Ending_minute_of_grid_data_(if_available)", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "Ending_minute_of_grid_data", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
     for(int i=102;i<108;i++)
@@ -182,7 +187,7 @@ set_file_headers( DAS &das, const string &filename )
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "Three-digit_channel_descriptor_(000_for_ice_concentrations)", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "Three-digit_channel_descriptor", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
     for(int i=120;i<126;i++)
@@ -217,11 +222,14 @@ set_file_headers( DAS &das, const string &filename )
 }
 
 void
-set_variable( DAS &das )
+set_ice_variable( DAS &das )
 {
     ostringstream ostream;
 
-    NSIDCVariable variable = NSIDCVariable();
+    NSIDCVariable variable = NSIDCVariable("sea_ice_concentration", 
+                                           "Sea ice concentration", 
+                                           250, 
+                                           "fractional coverage scaled by scale_factor");
 
     AttrTable *attr_table_ptr = das.get_table( variable._short_name ) ;
 
@@ -263,7 +271,43 @@ set_variable( DAS &das )
     attr_table_ptr->append_attr( "units", AttrType_to_String( Attr_string ), variable._units ) ;
 }
 
+void
+set_lat_variable( DAS &das )
+{
+    ostringstream ostream;
 
+    NSIDCVariable variable = NSIDCVariable("latitude",
+                                           "latitude",
+                                           0,
+                                           "deg");
+
+    AttrTable *attr_table_ptr = das.get_table( variable._short_name ) ;
+
+    if( !attr_table_ptr )
+        attr_table_ptr =
+            das.add_table( variable._short_name, new AttrTable );
+
+    attr_table_ptr->append_attr( "long_name", AttrType_to_String( Attr_string ),  variable._long_name ) ;
+}
+
+void
+set_lon_variable( DAS &das )
+{
+    ostringstream ostream;
+
+    NSIDCVariable variable = NSIDCVariable("longitude",
+                                           "longitude",
+                                           0,
+                                           "deg");
+
+    AttrTable *attr_table_ptr = das.get_table( variable._short_name ) ;
+
+    if( !attr_table_ptr )
+        attr_table_ptr =
+            das.add_table( variable._short_name, new AttrTable );
+
+    attr_table_ptr->append_attr( "long_name", AttrType_to_String( Attr_string ),  variable._long_name ) ;
+}
 
 
 

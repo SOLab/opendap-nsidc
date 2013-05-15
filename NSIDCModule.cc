@@ -22,7 +22,6 @@ using std::endl ;
 void
 NSIDCModule::initialize( const string &modname )
 {
-    std::cerr << "DEBUG:" << modname << std::endl;    
     BESDEBUG( modname, "Initializing NSIDC Module "
 		       << modname << endl ) ;
 
