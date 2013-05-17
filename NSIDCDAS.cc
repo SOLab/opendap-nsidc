@@ -269,6 +269,8 @@ set_ice_variable( DAS &das )
 
 
     attr_table_ptr->append_attr( "units", AttrType_to_String( Attr_string ), variable._units ) ;
+
+    attr_table_ptr->append_attr( "coordinates", AttrType_to_String( Attr_string ), "latitude longitude" ) ;
 }
 
 void
