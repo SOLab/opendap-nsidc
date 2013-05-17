@@ -103,14 +103,14 @@ set_file_headers( DAS &das, const string &filename )
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "J_coordinate_of_the_grid_intersection_at_the_pole", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "j_coordinate_of_the_grid_intersection_at_the_pole", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
     for(int i=48;i<53;i++)
     {
         ss <<  fileBuffer[i];
     }
-    attr_table_ptr->append_attr( "I_coordinate_of_the_grid_intersection_at_the_pole", AttrType_to_String( Attr_string ),  ss.str() ) ;
+    attr_table_ptr->append_attr( "i_coordinate_of_the_grid_intersection_at_the_pole", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
     for(int i=54;i<59;i++)
@@ -197,7 +197,7 @@ set_file_headers( DAS &das, const string &filename )
     attr_table_ptr->append_attr( "integer_scaling_factor", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=126;i<148;i++)
+    for(int i=126;i<147;i++)
     {
         ss <<  fileBuffer[i];
     }
