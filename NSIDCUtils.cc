@@ -1,6 +1,8 @@
 #include "NSIDCUtils.h"
 
 #include <sstream>
+#include <string>
+#include <algorithm>
 #include <regex.h>
 
 #include <AttrTable.h>
@@ -75,3 +77,9 @@ int get_rows_number(const string &filename)
     return rows;
 }
 
+string escape(string value)
+{
+    using std::replace;
+    replace(value.begin(), value.end(), '/', '_');
+    return value;
+}

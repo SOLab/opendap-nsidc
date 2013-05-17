@@ -116,7 +116,7 @@ NSIDCRequestHandler::binary_ssmi_nsidc_build_dds( BESDataHandlerInterface &dhi )
     }
     catch(...)
     {
-        throw BESDapError( "Caught unknown error build Ssmi DDS response", true,
+        throw BESDapError( "Caught unknown error build NSIDC DDS response", true,
                            unknown_error, __FILE__, __LINE__);
     }
 
