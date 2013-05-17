@@ -4,7 +4,8 @@
 #include <string>
 #include <algorithm>
 #include <regex.h>
-
+#include <iostream>  
+#include <fstream>
 #include <AttrTable.h>
 #include <BESDebug.h>
 #include <BESDapError.h>
@@ -16,35 +17,18 @@ using std::ostringstream;
 
 using namespace libdap;
 
-char *readBytesFromFile(string filename, int bytesLength)
-{       
-    FILE *pFile;
-    pFile = fopen( filename.c_str(), "rb" );
-    if (pFile == NULL)
-    {
-        string err = (string)"Unable to open file " + filename ;
-        throw BESNotFoundError( err, __FILE__, __LINE__ ) ;
-    }
-    
-    long fileLen;
-    fseek (pFile, 0, SEEK_END);
-    fileLen = ftell(pFile);
-    rewind(pFile);
-     
-    int capacity = bytesLength == 0 ? sizeof(char)*fileLen : bytesLength;   
-    //char *fileBuffer = (char*) malloc( capacity );
-    char *fileBuffer = new char[capacity];
-
-    if (!fileBuffer)
-    {   
-        throw BESDapError( "Unable to load file content into memory", true, 
-                            unknown_error, __FILE__, __LINE__ ) ;
-    }
-
-    // read file contents into buffer
-    fread(fileBuffer, 1, capacity, pFile);
-    fclose(pFile);
-    return fileBuffer;
+char* readBytesFromFile(string filename, size_t bytesLength)
+{
+    ifstream fl(filename.c_str());  
+    fl.seekg( 0, ios::end );  
+    size_t len = fl.tellg();
+    if (bytesLength > 0)
+        len = bytesLength;
+    char *ret = new char[len];  
+    fl.seekg(0, ios::beg);   
+    fl.read(ret, len);  
+    fl.close();  
+    return ret;  
 }
 
 bool is_north(const string &filename)

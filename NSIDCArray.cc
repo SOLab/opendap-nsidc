@@ -33,27 +33,27 @@ bool NSIDCArray::read()
     int columns = get_columns_number(filename);
     int rows = get_rows_number(filename);
     int headerSize = 300;
-
+    
     if (start[0] >= columns || 
         stop[0] >= columns ||
         start[1] >= rows ||
 	stop[1] >= rows) {
 	    throw BESDapError( "Requested index is greater than grid dimension", true,
                                unknown_error, __FILE__, __LINE__ ) ;
-	}
-    
+    }
+
     // allocate memory for destination buffer
     int capacity = rows * columns; 
     int counter = 0;
+
     if (this->name() == "sea_ice_concentration") {
         // read all bytes from file
-        char *fileBuffer = readBytesFromFile(filename, capacity + headerSize);
+        char *fileBuffer = readBytesFromFile(filename, 0);
         char *buffer = (char*) malloc( capacity );
         for (int i = start[0]; i <= stop[0]; i += stride[0]) {
             for (int j = start[1]; j <= stop[1]; j += stride[1]) {
 	        int byteIndex = (columns * j + i) + headerSize;
 	        buffer[counter++] = fileBuffer[byteIndex];
-		//std::cerr << byteIndex << std::endl;
             }
         }
         val2buf( (void*) buffer ) ;
@@ -64,7 +64,6 @@ bool NSIDCArray::read()
         for (int i = start[0]; i <= stop[0]; i += stride[0]) {
             for (int j = start[1]; j <= stop[1]; j += stride[1]) {
                 int byteIndex = (columns * j + i);
-		//std::cerr << GridCoordinates::longitudes[byteIndex] << std::endl;
                 float value = this->name() == "latitude"
                     ? GridCoordinates::latitudes[byteIndex]
                     : GridCoordinates::longitudes[byteIndex];
@@ -77,7 +76,6 @@ bool NSIDCArray::read()
         throw BESDapError( "Unknown variable " + this->name(), true,
                                unknown_error, __FILE__, __LINE__ ) ;
     }
-
     set_read_p( true ) ;
     return true ;
 }
