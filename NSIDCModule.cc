@@ -11,6 +11,7 @@ using std::endl ;
 #include "BESResponseHandlerList.h"
 #include "BESResponseNames.h"
 #include "NSIDCResponseNames.h"
+#include "NSIDCGridCoordinates.h"
 
 #include "BESContainerStorageList.h"
 #include "BESContainerStorageCatalog.h"
@@ -76,6 +77,12 @@ NSIDCModule::terminate( const string &modname )
     // If new commands are needed, then let's declare this once here. If
     // not, then you can remove this line.
     string cmd_name ;
+
+    BESDEBUG( modname, "    removing lat/lon arrays " << endl ) ;
+    if (latitudesNorth) delete latitudesNorth;
+    if (longitudesNorth) delete longitudesNorth;
+    if (latitudesSouth) delete latitudesSouth;
+    if (longitudesSouth) delete longitudesSouth;
 
     // TERM_END
     BESDEBUG( modname, "Done Cleaning NSIDC module "
