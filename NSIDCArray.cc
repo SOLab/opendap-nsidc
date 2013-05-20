@@ -65,8 +65,9 @@ bool NSIDCArray::read()
             for (int j = start[1]; j <= stop[1]; j += stride[1]) {
                 int byteIndex = (columns * j + i);
                 float value = this->name() == "latitude"
-                    ? GridCoordinates::latitudes[byteIndex]
-                    : GridCoordinates::longitudes[byteIndex];
+                    ? latitudes[byteIndex]
+                    : longitudes[byteIndex];
+                //std::cerr << value << std::endl;
                 buffer[counter++] = value;
             }
         }
