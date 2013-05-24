@@ -225,94 +225,58 @@ void
 set_ice_variable( DAS &das )
 {
     ostringstream ostream;
-
-    NSIDCVariable variable = NSIDCVariable("sea_ice_concentration", 
-                                           "Sea ice concentration", 
-                                           250, 
-                                           "fractional coverage scaled by scale_factor");
-
-    AttrTable *attr_table_ptr = das.get_table( variable._short_name ) ;
+    AttrTable *attr_table_ptr = das.get_table("sea_ice_concentration") ;
 
     if( !attr_table_ptr )
         attr_table_ptr =
-            das.add_table( variable._short_name, new AttrTable );
+            das.add_table("sea_ice_concentration", new AttrTable );
 
-    attr_table_ptr->append_attr( "long_name", AttrType_to_String( Attr_string ),  variable._long_name ) ;
+    attr_table_ptr->append_attr("long_name", AttrType_to_String( Attr_string ), "Sea Ice Concentration");
+    attr_table_ptr->append_attr("description", AttrType_to_String( Attr_string ), "fractional coverage scaled by scale_factor");
 
     ostream.str("");
     ostream << 0 ;
-    attr_table_ptr->append_attr( "add_offset", AttrType_to_String( Attr_byte ), ostream.str() ) ;
+    attr_table_ptr->append_attr( "add_offset", AttrType_to_String( Attr_byte ), ostream.str());
 
     ostream.str("");
-    ostream << variable._scale_factor ;
-    attr_table_ptr->append_attr( "scale_factor", AttrType_to_String( Attr_byte ), ostream.str() ) ;
+    ostream << 250;
+    attr_table_ptr->append_attr( "scale_factor", AttrType_to_String( Attr_byte ), ostream.str());
 
-    ostream.str("");
-    ostream << 251 ;
-    attr_table_ptr->append_attr( "_arctic_pole_data_gap", AttrType_to_String( Attr_byte ), ostream.str() ) ;
+    attr_table_ptr->append_attr( "flag_values", AttrType_to_String( Attr_byte ), "251 252 253 254");
 
-    ostream.str("");
-    ostream << 252 ;
-    attr_table_ptr->append_attr( "_unused_value", AttrType_to_String( Attr_byte ), ostream.str() ) ;
+    attr_table_ptr->append_attr( "flag_meanings", AttrType_to_String( Attr_byte ), "arctic_pole_data_gap unused_value coastlines superimposed_land_mask" ) ;
 
-    ostream.str("");
-    ostream << 253 ;
-    attr_table_ptr->append_attr( "_coastlines", AttrType_to_String( Attr_byte ), ostream.str() ) ;
-
-    ostream.str("");
-    ostream << 254 ;
-    attr_table_ptr->append_attr( "_superimposed_land_mask", AttrType_to_String( Attr_byte ), ostream.str() ) ;
-
-    ostream.str("");
-    ostream << 255 ;
-    attr_table_ptr->append_attr( "_missing_data", AttrType_to_String( Attr_byte ), ostream.str() ) ;
-
-
-    attr_table_ptr->append_attr( "units", AttrType_to_String( Attr_string ), variable._units ) ;
-
-    attr_table_ptr->append_attr( "coordinates", AttrType_to_String( Attr_string ), "latitude longitude" ) ;
+    attr_table_ptr->append_attr( "missing_value", AttrType_to_String( Attr_byte ), "255");
+    attr_table_ptr->append_attr( "units", AttrType_to_String( Attr_string ), "1");
+    attr_table_ptr->append_attr( "coordinates", AttrType_to_String( Attr_string ), "latitude longitude");
 }
 
 void
 set_lat_variable( DAS &das )
 {
-    ostringstream ostream;
+    AttrTable *attr_table_ptr = das.get_table( "latitude");
 
-    NSIDCVariable variable = NSIDCVariable("latitude",
-                                           "latitude",
-                                           0,
-                                           "deg");
-
-    AttrTable *attr_table_ptr = das.get_table( variable._short_name ) ;
-
-    if( !attr_table_ptr )
+    if(!attr_table_ptr)
         attr_table_ptr =
-            das.add_table( variable._short_name, new AttrTable );
+            das.add_table("latitude", new AttrTable);
 
-    attr_table_ptr->append_attr( "long_name", AttrType_to_String( Attr_string ),  variable._long_name ) ;
-    attr_table_ptr->append_attr( "units", AttrType_to_String( Attr_string ),  "degrees_north" ) ;
-    attr_table_ptr->append_attr( "standard_name", AttrType_to_String( Attr_string ),  "latitude" ) ;
+    attr_table_ptr->append_attr("long_name", AttrType_to_String( Attr_string ), "latitude");
+    attr_table_ptr->append_attr("units", AttrType_to_String( Attr_string ), "degrees_north");
+    attr_table_ptr->append_attr("standard_name", AttrType_to_String( Attr_string ), "latitude");
 }
 
 void
 set_lon_variable( DAS &das )
 {
-    ostringstream ostream;
-
-    NSIDCVariable variable = NSIDCVariable("longitude",
-                                           "longitude",
-                                           0,
-                                           "deg");
-
-    AttrTable *attr_table_ptr = das.get_table( variable._short_name ) ;
+    AttrTable *attr_table_ptr = das.get_table( "longitude" ) ;
 
     if( !attr_table_ptr )
         attr_table_ptr =
-            das.add_table( variable._short_name, new AttrTable );
+            das.add_table( "longitude", new AttrTable );
 
-    attr_table_ptr->append_attr( "long_name", AttrType_to_String( Attr_string ),  variable._long_name ) ;
-    attr_table_ptr->append_attr( "units", AttrType_to_String( Attr_string ),  "degrees_east" ) ;
-    attr_table_ptr->append_attr( "standard_name", AttrType_to_String( Attr_string ),  "longitude" ) ;
+    attr_table_ptr->append_attr( "long_name", AttrType_to_String( Attr_string ), "longitude");
+    attr_table_ptr->append_attr( "units", AttrType_to_String( Attr_string ),  "degrees_east" );
+    attr_table_ptr->append_attr( "standard_name", AttrType_to_String( Attr_string ),  "longitude");
 }
 
 
