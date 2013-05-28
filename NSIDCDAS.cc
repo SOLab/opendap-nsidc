@@ -242,7 +242,7 @@ set_ice_variable( DAS &das )
     ostream << 250;
     attr_table_ptr->append_attr( "scale_factor", AttrType_to_String( Attr_byte ), ostream.str());
 
-    attr_table_ptr->append_attr( "flag_values", AttrType_to_String( Attr_byte ), "251 252 253 254");
+    attr_table_ptr->append_attr( "flag_values", AttrType_to_String( Attr_byte ), "251, 252, 253, 254");
 
     attr_table_ptr->append_attr( "flag_meanings", AttrType_to_String( Attr_byte ), "arctic_pole_data_gap unused_value coastlines superimposed_land_mask" ) ;
 
