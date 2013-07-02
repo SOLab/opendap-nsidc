@@ -19,7 +19,7 @@ NSIDC_HDRS:=
 
 BES_SRCS = \
 		NSIDCModule.cc NSIDCRequestHandler.cc NSIDCVariable.cc NSIDCArray.cc NSIDCUtils.cc \
-                NSIDCDAS.cc NSIDCDDS.cc NSIDCGridCoordinatesLat.cc NSIDCGridCoordinatesLon.cc \
+                NSIDCDAS.cc NSIDCDDS.cc NSIDCGridCoordinatesLat2.cc NSIDCGridCoordinatesLon2.cc \
                 NSIDCGridCoordinatesLatS.cc NSIDCGridCoordinatesLonS.cc
 
 BES_HDRS = \

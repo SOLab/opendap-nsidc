@@ -96,8 +96,8 @@ am__objects_2 = libbinary_ssmi_nsidc_module_la-NSIDCModule.lo \
 	libbinary_ssmi_nsidc_module_la-NSIDCUtils.lo \
 	libbinary_ssmi_nsidc_module_la-NSIDCDAS.lo \
 	libbinary_ssmi_nsidc_module_la-NSIDCDDS.lo \
-	libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.lo \
-	libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.lo \
+	libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.lo \
+	libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.lo \
 	libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLatS.lo \
 	libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLonS.lo
 am_libbinary_ssmi_nsidc_module_la_OBJECTS = $(am__objects_1) \
@@ -294,7 +294,7 @@ NSIDC_SRCS :=
 NSIDC_HDRS := 
 BES_SRCS = \
 		NSIDCModule.cc NSIDCRequestHandler.cc NSIDCVariable.cc NSIDCArray.cc NSIDCUtils.cc \
-                NSIDCDAS.cc NSIDCDDS.cc NSIDCGridCoordinatesLat.cc NSIDCGridCoordinatesLon.cc \
+                NSIDCDAS.cc NSIDCDDS.cc NSIDCGridCoordinatesLat2.cc NSIDCGridCoordinatesLon2.cc \
                 NSIDCGridCoordinatesLatS.cc NSIDCGridCoordinatesLonS.cc
 
 BES_HDRS = \
@@ -453,9 +453,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCArray.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCDAS.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCDDS.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLatS.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLonS.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCModule.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCRequestHandler.Plo@am__quote@
@@ -532,19 +532,19 @@ libbinary_ssmi_nsidc_module_la-NSIDCDDS.lo: NSIDCDDS.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbinary_ssmi_nsidc_module_la-NSIDCDDS.lo `test -f 'NSIDCDDS.cc' || echo '$(srcdir)/'`NSIDCDDS.cc
 
-libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.lo: NSIDCGridCoordinatesLat.cc
-@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.lo -MD -MP -MF $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.Tpo -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.lo `test -f 'NSIDCGridCoordinatesLat.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLat.cc
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.Tpo $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='NSIDCGridCoordinatesLat.cc' object='libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.lo' libtool=yes @AMDEPBACKSLASH@
+libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.lo: NSIDCGridCoordinatesLat2.cc
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.lo -MD -MP -MF $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.Tpo -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.lo `test -f 'NSIDCGridCoordinatesLat2.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLat2.cc
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.Tpo $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='NSIDCGridCoordinatesLat2.cc' object='libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat.lo `test -f 'NSIDCGridCoordinatesLat.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLat.cc
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLat2.lo `test -f 'NSIDCGridCoordinatesLat2.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLat2.cc
 
-libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.lo: NSIDCGridCoordinatesLon.cc
-@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.lo -MD -MP -MF $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.Tpo -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.lo `test -f 'NSIDCGridCoordinatesLon.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLon.cc
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.Tpo $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='NSIDCGridCoordinatesLon.cc' object='libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.lo' libtool=yes @AMDEPBACKSLASH@
+libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.lo: NSIDCGridCoordinatesLon2.cc
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.lo -MD -MP -MF $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.Tpo -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.lo `test -f 'NSIDCGridCoordinatesLon2.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLon2.cc
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.Tpo $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='NSIDCGridCoordinatesLon2.cc' object='libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon.lo `test -f 'NSIDCGridCoordinatesLon.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLon.cc
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLon2.lo `test -f 'NSIDCGridCoordinatesLon2.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLon2.cc
 
 libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLatS.lo: NSIDCGridCoordinatesLatS.cc
 @am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbinary_ssmi_nsidc_module_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLatS.lo -MD -MP -MF $(DEPDIR)/libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLatS.Tpo -c -o libbinary_ssmi_nsidc_module_la-NSIDCGridCoordinatesLatS.lo `test -f 'NSIDCGridCoordinatesLatS.cc' || echo '$(srcdir)/'`NSIDCGridCoordinatesLatS.cc

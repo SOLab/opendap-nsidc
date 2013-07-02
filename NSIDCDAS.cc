@@ -190,7 +190,7 @@ set_file_headers( DAS &das, const string &filename )
     attr_table_ptr->append_attr( "three_digit_channel_descriptor", AttrType_to_String( Attr_string ),  ss.str() ) ;
     ss.str("");
 
-    for(int i=120;i<126;i++)
+    for(int i=120;i<125;i++)
     {
         ss <<  fileBuffer[i];
     }
