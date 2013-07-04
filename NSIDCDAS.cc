@@ -238,13 +238,11 @@ set_ice_variable( DAS &das )
     ostream << 0 ;
     attr_table_ptr->append_attr( "add_offset", AttrType_to_String( Attr_byte ), ostream.str());
 
-    ostream.str("");
-    ostream << 250;
-    attr_table_ptr->append_attr( "scale_factor", AttrType_to_String( Attr_byte ), ostream.str());
+    attr_table_ptr->append_attr( "scale_factor", AttrType_to_String( Attr_string), "0.004");
 
     attr_table_ptr->append_attr( "flag_values", AttrType_to_String( Attr_byte ), "251, 252, 253, 254");
 
-    //attr_table_ptr->append_attr( "flag_meanings", AttrType_to_String( Attr_byte ), "arctic_pole_data_gapunused_value|coastlines|superimposed_land_mask" ) ;
+    attr_table_ptr->append_attr( "flag_meanings", AttrType_to_String( Attr_byte ), "arctic_pole_data_gap unused_value coastlines superimposed_land_mask" ) ;
 
     attr_table_ptr->append_attr( "missing_value", AttrType_to_String( Attr_byte ), "255");
     attr_table_ptr->append_attr( "units", AttrType_to_String( Attr_string ), "1");
